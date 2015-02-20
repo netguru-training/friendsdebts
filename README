@@ -1,0 +1,4 @@
+RECIPES
+["devise", "gems", "git", "init", "omniauth", "setup", "tests"]
+PREFERENCES
+{:git=>true, :dev_webserver=>"webrick", :prod_webserver=>"webrick", :database=>"postgresql", :templates=>"haml", :tests=>"rspec", :continuous_testing=>"none", :email=>"none", :authentication=>"none", :authorization=>"none", :form_builder=>"simple_form"}
