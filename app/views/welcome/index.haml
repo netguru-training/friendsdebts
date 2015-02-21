@@ -1,0 +1,5 @@
+- if !user_signed_in?
+  .jumbotron
+    %h1 Welcome in Friends Debts
+    %p This is a place where You can share depts with friends. If you want to join sign up.
+    %p= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg'
