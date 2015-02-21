@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
         amount -= recipe.amount / (recipe.recipe_members.count + 1)
       end
       # now in amount I have proper value
+      user.amount = amount
     end
   end
 

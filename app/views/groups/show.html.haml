@@ -3,5 +3,17 @@
 %p
   = link_to 'Add new recipe', new_group_recipe_path(group), class: 'btn btn-primary'
 
+%table.table
+  %tr
+    %th Name:
+    %th Money:
+  -group.users.each do |user|
+    - next if user == current_user
+    %tr
+      %td
+        = user.email
+      %td
+        = user.amount
+
 %p
   = link_to 'Add new member',add_user_group_path, class: 'btn btn-primary'
