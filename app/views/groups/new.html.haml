@@ -1,2 +1,9 @@
-%h1 Groups#new
-%p Find me in app/views/groups/new.html.haml
+%h1
+  = "Group #{group.name}"
+%h2 Adding new member:
+= simple_form_for group do |f|
+  .form-group
+    .form-input
+      = f.input :name
+
+  = f.button :submit, "Add", class: 'btn btn-default'
