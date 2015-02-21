@@ -4,4 +4,9 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_members
 
   attr_accessor :users
+
+  validates :amount, presence: true, numericality: true, greater_than: 0
+  validates :description, presence: true
+  validates :group_id, presence: true
+  validates :user_id, presence: true
 end
