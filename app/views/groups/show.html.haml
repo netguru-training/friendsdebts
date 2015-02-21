@@ -1,3 +1,7 @@
 %h1
   = "Group #{group.name}"
+%p
+  = link_to 'Add new recipe', new_group_recipe_path(group), class: 'btn btn-primary'
 
+%p
+  = link_to 'Add new member',add_user_group_path, class: 'btn btn-primary'
