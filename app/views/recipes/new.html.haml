@@ -1,9 +1,9 @@
 = simple_form_for([group, recipe]) do |f|
   .form-group
-    = f.input :amount
+    = f.input :amount, required: true, autofocus: true, placeholder: "0.00", input_html: { class: 'form-control' }
   .form-group
-    = f.input :description
+    = f.input :description, required: true, autofocus: true, placeholder: "Enter description", input_html: { class: 'form-control' }
   .form-group
     = f.input :users, collection: group.users, label_method: :email, as: :check_boxes
   .form-actions
-    = f.submit
+    = f.button :submit, class: 'btn btn-primary'
