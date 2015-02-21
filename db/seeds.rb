@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+5.times do |n|
+  User.create(email: "example#{n}@mail.com", password: "12345678")
+end
+
+2.times do |n|
+  Group.create(name: "Group#{n}")
+end
+
+User.all.each do |user|
+  Membership.create(group_id: Group.first.id, user_id: user.id)
+  Membership.create(group_id: Group.last.id, user_id: user.id)
+end
