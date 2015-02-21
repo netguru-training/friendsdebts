@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :groups, only: [:show, :new, :create]
+  resources :groups, only: [:show, :new, :create] do
+    resources :recipes, only: [:index, :new, :create, :destroy]
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
