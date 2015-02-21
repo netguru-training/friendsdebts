@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
 
   def create
     if group.save
+      group.users << current_user
       redirect_to group, notice: 'group was successfully created'
     else
       render :new
