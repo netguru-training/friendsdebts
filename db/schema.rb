@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150221152931) do
     t.decimal  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "balance"
+    t.boolean  "balance",     default: false
   end
 
   create_table "users", force: true do |t|
