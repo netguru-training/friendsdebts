@@ -4,7 +4,7 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   Mayor.create(name: 'Emanuel', city: citieas.first)
 
 5.times do |n|
   User.create(email: "example#{n}@mail.com", password: "12345678")
@@ -18,3 +18,17 @@ User.all.each do |user|
   Membership.create(group_id: Group.first.id, user_id: user.id)
   Membership.create(group_id: Group.last.id, user_id: user.id)
 end
+
+3.times do |n|
+  Recipe.create(amount: 25, description: "recipe#{n}", group_id: Group.first.id, user_id: User.last.id)
+  Recipe.create(amount: 25, description: "recipe#{n}", group_id: Group.first.id, user_id: User.first.id)
+end
+
+Recipe.all.each do |recipe|
+  Group.first.users.each do |user|
+    next if user == recipe.user
+    RecipeMember.create(recipe_id: recipe.id, user_id: user.id)
+  end
+end
+
+
