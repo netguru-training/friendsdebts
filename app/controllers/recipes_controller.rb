@@ -8,17 +8,24 @@ class RecipesController < ApplicationController
   end
 
   def new
-    binding.pry
+    group.users.each do |user|
+      recipe.recipe_members.build(user: user)
+    end
+    # binding.pry
   end
 
   def create
-    # recipe.user = current_user
-    # recipe.group = Group.find(params[:id])
-    # if recipe.save
-    #   redirect_to recipes_path, notice: 'Recipe was successfully created'
-    # else
-    #   render :new
-    # end
+    # binding.pry
+    recipe.user = current_user
+    if recipe.save
+      # binding.pry
+      params[:recipe][:users].each do |user_id|
+        RecipeMember.create(user_id: user_id, recipe_id: recipe.id) if user_id.to_i > 0
+      end
+      redirect_to group_recipes_path(group), notice: 'Recipe was successfully created'
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -27,6 +34,6 @@ class RecipesController < ApplicationController
 
   private
     def recipe_params
-      params.require(:recipe).permit(:description, :amount)
+      params.require(:recipe).permit(:description, :amount, :users)
     end
 end

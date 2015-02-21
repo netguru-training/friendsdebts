@@ -1,0 +1,9 @@
+= simple_form_for([group, recipe]) do |f|
+  .form-group
+    = f.input :amount
+  .form-group
+    = f.input :description
+  .form-group
+    = f.input :users, collection: group.users, label_method: :email, as: :check_boxes
+  .form-actions
+    = f.submit

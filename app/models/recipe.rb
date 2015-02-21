@@ -1,5 +1,7 @@
 class Recipe < ActiveRecord::Base
-  belongs_to :groups
-  belongs_to :users
+  belongs_to :group
+  belongs_to :user
   has_many :recipe_members
+
+  attr_accessor :users
 end

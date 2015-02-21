@@ -1,3 +1,8 @@
 class RecipeMember < ActiveRecord::Base
-  has_many :recipe_members
+  belongs_to :recipe
+  belongs_to :user
+
+  def user_email
+    user.email
+  end
 end
