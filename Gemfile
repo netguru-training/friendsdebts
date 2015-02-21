@@ -23,6 +23,8 @@ gem 'binding_of_caller'
 gem 'pry-rails'
 
 gem 'devise'
+gem 'bootstrap-sass', '~> 3.1.0'
+
 group :development do
   gem 'html2haml'
   gem 'rails_apps_testing'
