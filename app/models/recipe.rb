@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
 
   attr_accessor :users
 
-  validates :amount, presence: true, numericality: true, greater_than: 0
+  validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :description, presence: true
   validates :group_id, presence: true
   validates :user_id, presence: true
