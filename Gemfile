@@ -22,6 +22,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
 
+gem 'devise'
 group :development do
   gem 'html2haml'
   gem 'rails_apps_testing'
