@@ -19,6 +19,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def add_user
+    @user = User.new
+  end
+
+  def create_user
+  end
+
   private
     def group_params
       params.require(:group).permit(:name)

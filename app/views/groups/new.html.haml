@@ -1,9 +1,9 @@
 %h1
   = "Group #{group.name}"
-%h2 Adding new member:
+%h2 Add new group:
 = simple_form_for group do |f|
+  = f.error_notification
   .form-group
-    .form-input
-      = f.input :name
-
-  = f.button :submit, "Add", class: 'btn btn-default'
+    = f.input :name, autofocus: true, placeholder: "Enter name", input_html: { class: 'form-control' }
+  .form-group
+    = f.button :submit, "Add", class: 'btn btn-default'

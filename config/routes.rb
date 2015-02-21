@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:show, :new, :create] do
     resources :recipes, only: [:index, :new, :create, :destroy]
+    member do
+      get 'add_user'
+      post 'create_user'
+    end
   end
 
   devise_for :users
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
