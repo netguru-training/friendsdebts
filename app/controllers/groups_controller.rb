@@ -12,23 +12,20 @@ class GroupsController < ApplicationController
       next if user == current_user
       amount = 0
       # every recipe members for recipes that I created and user is involved with
-      additive_recipe_members = RecipeMember.joins("LEFT OUTER JOIN recipes ON recipes.id = recipe_members.recipe_id")
-        .where("recipes.user_id = :current_user_id AND recipe_members.user_id = :user_id AND recipes.group_id = :group_id", current_user_id: current_user.id, user_id: user.id, group_id: group.id)
+      additive_recipe_members = RecipeMember.joins("LEFT OUTER JOIN recipes ON recipes.id = recipe_members.recipe_id").where("recipes.user_id = :current_user_id AND recipe_members.user_id = :user_id AND recipes.group_id = :group_id", current_user_id: current_user.id, user_id: user.id, group_id: group.id)
       additive_recipe_members.each do |recipe_member|
         recipe = recipe_member.recipe
         # add one for current_user
         amount += recipe.amount / (recipe.recipe_members.count + 1)
       end
-      binding.pry
-      subtraction_recipe_members = RecipeMember.joins("LEFT OUTER JOIN recipes ON recipes.id = recipe_members.recipe_id")
-        .where("recipes.user_id = :user_id AND recipe_members.user_id = :current_user_id AND recipes.group_id = :group_id", current_user_id: current_user.id, user_id: user.id, group_id: group.id)
+      # binding.pry
+      subtraction_recipe_members = RecipeMember.joins("LEFT OUTER JOIN recipes ON recipes.id = recipe_members.recipe_id").where("recipes.user_id = :user_id AND recipe_members.user_id = :current_user_id AND recipes.group_id = :group_id", current_user_id: current_user.id, user_id: user.id, group_id: group.id)
       subtraction_recipe_members.each do |recipe_member|
         recipe = recipe_member.recipe
         # add one for user
         amount -= recipe.amount / (recipe.recipe_members.count + 1)
       end
       # now in amount I have proper value
-      user.amount = amount
     end
   end
 
