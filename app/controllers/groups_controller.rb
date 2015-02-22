@@ -86,6 +86,7 @@ class GroupsController < ApplicationController
     all_members.map { |e| e.update_attributes(balance: true) }
     FrindsdebtsMailer.balance_email(user, group, current_user.email).deliver
     redirect_to group_path(group)
+    binding.pry
   end
 
   def history
