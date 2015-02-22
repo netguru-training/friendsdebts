@@ -11,4 +11,5 @@
           = recipe_member.recipe.user.email + " borrowed you for " + recipe_member.recipe.description
         - else
           = "You borrowed " + recipe_member.user.email + " for " + recipe_member.recipe.description
+          = link_to "remove", group_recipe_path(group, recipe_member.recipe), method: :delete
       

@@ -1,7 +1,7 @@
 class Recipe < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
-  has_many :recipe_members
+  has_many :recipe_members, dependent: :destroy
   default_scope { where.not(balance: true) }
 
   attr_accessor :users

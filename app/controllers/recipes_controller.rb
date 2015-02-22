@@ -27,7 +27,8 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    # recipe.destroy
+    recipe.destroy
+    redirect_to history_path(group)
   end
 
   private

@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
   resources :groups, only: [:show, :new, :create] do
-    resources :recipes, only: [:index, :new, :create, :destroy] do
-      resources :recipes_members, only: [:delete]
-    end
+    resources :recipes, only: [:index, :new, :create, :destroy]
     member do
       get 'add_user'
       post 'create_user'
