@@ -89,7 +89,7 @@ class GroupsController < ApplicationController
   end
 
   def history
-    @recipe_members = RecipeMember.joins("LEFT OUTER JOIN recipes ON recipes.id = recipe_members.recipe_id").where("recipes.user_id = :current_user_id OR recipe_members.user_id = :current_user_id AND recipes.group_id = :group_id", current_user_id: current_user.id, group_id: group.id)
+    @recipe_members = RecipeMember.joins("LEFT OUTER JOIN recipes ON recipes.id = recipe_members.recipe_id").where("recipes.group_id = :group_id AND recipes.user_id = :current_user_id OR recipe_members.user_id = :current_user_id", current_user_id: current_user.id, group_id: group.id)
   end
 
 
