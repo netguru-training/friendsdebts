@@ -24,4 +24,5 @@ Setup database using `rake db:setup` and add a new app on your facebook develper
 
 ### Contributors 
 [Katarzyna Kobierska](https://github.com/kradydal)
+
 [Przemysław Fałowski](https://github.com/przemkow)
