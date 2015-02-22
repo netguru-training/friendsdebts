@@ -22,6 +22,7 @@ Setup database using `rake db:setup` and add a new app on your facebook develper
 * History of debts
 
 ### Spec
+To run spec run `rspec spec`
 
 ### Contributors 
 [Katarzyna Kobierska](https://github.com/kradydal)
