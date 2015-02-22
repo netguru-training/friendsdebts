@@ -20,7 +20,8 @@ class RecipesController < ApplicationController
           FrindsdebtsMailer.new_debt_email(User.find(user_id), group).deliver
         end
       end
-      redirect_to group_path(group), notice: 'Recipe was successfully created'
+      redirect_to group_path(group)
+      flash[:success] = 'Recipe was successfully created'
     else
       render :new
     end
@@ -29,6 +30,7 @@ class RecipesController < ApplicationController
   def destroy
     recipe.destroy
     redirect_to history_path(group)
+    flash[:danger] = 'Recipe was deleted'
   end
 
   private
