@@ -84,6 +84,7 @@ class GroupsController < ApplicationController
         group_id: group.id)
     all_members = additive_recipe_members + subtraction_recipe_members
     all_members.map { |e| e.update_attributes(balance: true) }
+    FrindsdebtsMailer.balance_email(user, group, current_user.email).deliver
     redirect_to group_path(group)
   end
 
