@@ -1,28 +1,27 @@
-== README
+# FriendsDebts
+FriendsDebts is an app created during Netguru workshops on 21 and 22 February 2015. App let you track and menage of debts between you, your friends and family, so you always know how much money they owe you or you owe them.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### How to setup:
+Clone our repository: `git clone https://github.com/netguru-training/friendsdebts.git`
 
-Things you may want to cover:
+Copy the database config file and aplication config file: 
 
-* Ruby version
+` cp config/database.yml.example config/database.yml`
 
-* System dependencies
+` cp config/application.yml.example config/application.yml`
 
-* Configuration
+Setup database using `rake db:setup` and add a new app on your facebook develper site. After that fill in application.yml with proper value.
 
-* Database creation
+### Features
+* Sing up via email or Facebook account
+* Creating groups and adding members
+* Adding recipes to group, in every recipe you can specify users from this group.
+* Checking balance of each user in your group, basing on recipe which you share.
+* Balancing user debt
+* History of debts
 
-* Database initialization
+### Spec
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Contributors 
+[Katarzyna Kobierska](https://github.com/kradydal)
+[Przemysław Fałowski](https://github.com/przemkow)
