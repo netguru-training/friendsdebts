@@ -2,25 +2,23 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
   expose(:group)
   expose(:recipes, ancestor: :group)
-  expose(:recipe)
+  expose(:recipe, attributes: :recipe_params)
 
   def index
   end
 
   def new
-    group.users.each do |user|
-      recipe.recipe_members.build(user: user)
-    end
-    # binding.pry
+    @permited_users = group.users.select { |u| u != current_user }
   end
 
   def create
-    # binding.pry
     recipe.user = current_user
     if recipe.save
-      # binding.pry
       params[:recipe][:users].each do |user_id|
-        RecipeMember.create(user_id: user_id, recipe_id: recipe.id) if user_id.to_i > 0
+        if user_id.to_i > 0
+          RecipeMember.create(user_id: user_id, recipe_id: recipe.id)
+          FrindsdebtsMailer.new_debt_email(User.find(user_id), group).deliver
+        end
       end
       redirect_to group_recipes_path(group), notice: 'Recipe was successfully created'
     else

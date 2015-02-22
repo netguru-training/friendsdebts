@@ -4,6 +4,6 @@
   .form-group
     = f.input :description, required: true, autofocus: true, placeholder: "Enter description", input_html: { class: 'form-control' }
   .form-group
-    = f.input :users, collection: group.users, label_method: :email, as: :check_boxes
+    = f.input :users, collection: @permited_users, label_method: :email, as: :check_boxes
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
