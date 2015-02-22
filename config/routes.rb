@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
   resources :groups, only: [:show, :new, :create] do
-    resources :recipes, only: [:index, :new, :create, :destroy]
+    resources :recipes, only: [:index, :new, :create, :destroy] do
+      resources :recipes_members, only: [:delete]
+    end
     member do
       get 'add_user'
       post 'create_user'
     end
   end
+
+  get 'groups/:id/history' => 'groups#history', as: :history
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

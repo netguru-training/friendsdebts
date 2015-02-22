@@ -1,0 +1,14 @@
+%h1.style{ style: 'text-align: center' }
+  = "Group #{group.name}"
+
+%h4.style{ style: 'text-align: center' } History
+
+%p.style{ style: 'text-align: center' }
+  %ul
+    - @recipe_members.each do |recipe_member|
+      %li
+        - if recipe_member.user_id == current_user.id
+          = recipe_member.recipe.user.email + " borrowed you for " + recipe_member.recipe.description
+        - else
+          = "You borrowed " + recipe_member.user.email + " for " + recipe_member.recipe.description
+      
