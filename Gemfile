@@ -24,6 +24,9 @@ gem 'pry-rails'
 
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.1.0'
+gem 'therubyracer'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'html2haml'
