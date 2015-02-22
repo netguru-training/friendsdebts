@@ -18,6 +18,7 @@ Setup database using `rake db:setup` and add a new app on your facebook develper
 * Adding recipes to group, in every recipe you can specify users from this group.
 * Checking balance of each user in your group, basing on recipe which you share.
 * Balancing user debt
+* Email notification after balance or add new recipe
 * History of debts
 
 ### Spec
