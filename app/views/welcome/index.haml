@@ -5,10 +5,20 @@
     %p= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg'
 - else
   %h1.style{ style: 'text-align: center' } My Dashboard
-  %h3 
-    Choose your group: (
-    = link_to 'add new', new_group_path
-    )
-  %ul
-    - current_user.groups.each do |group|
-      %li= link_to group.name, group_path(group)
+  
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title 
+        Choose your group
+        = link_to 'Add New', new_group_path, class: 'btn btn-primary btn-sm'
+    .panel-body
+      %table.table
+        %tr
+          %th #
+          %th Group Name
+        - current_user.groups.each.with_index(1) do |group, index|
+          %tr
+            %td
+              = index
+            %td
+              = link_to group.name, group_path(group)

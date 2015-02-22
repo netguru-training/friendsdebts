@@ -16,7 +16,8 @@
       %td
         = user.amount
       %td
-        = button_to "Balance", { action: "balance_user", user_id: user.id }, data: { confirm: "Are you sure?" }, class: 'btn btn-primary'
+        - if user.amount != 0
+          = button_to "Balance", { action: "balance_user", user_id: user.id }, data: { confirm: "Are you sure?" }, class: 'btn btn-primary'
 
 %p
   = link_to 'Add new member',add_user_group_path, class: 'btn btn-primary'

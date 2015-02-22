@@ -1,15 +1,23 @@
 %h1.style{ style: 'text-align: center' }
   = "Group #{group.name}"
 
-%h4.style{ style: 'text-align: center' } History
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title.style{ style: 'text-align: center' } History
 
-%p.style{ style: 'text-align: center' }
-  %ul
-    - @recipe_members.each do |recipe_member|
-      %li
-        - if recipe_member.user_id == current_user.id
-          = recipe_member.recipe.user.email + " borrowed you for " + recipe_member.recipe.description
-        - else
-          = "You borrowed " + recipe_member.user.email + " for " + recipe_member.recipe.description
-          = link_to "remove", group_recipe_path(group, recipe_member.recipe), method: :delete
-      
+  .panel-body
+    %table.table
+      %tr
+        %th #
+        %th Activity
+        %th Action
+      - @recipe_members.each.with_index(1) do |recipe_member, index|
+        %tr
+          %td= index
+          - if recipe_member.user_id == current_user.id
+            %td= recipe_member.recipe.user.email + " borrowed you for " + recipe_member.recipe.description
+            %td
+          - else
+            %td= "You borrowed " + recipe_member.user.email + " for " + recipe_member.recipe.description
+            %td= link_to "Remove the recipe", group_recipe_path(group, recipe_member.recipe), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?" }
+        
