@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       get 'add_user'
       post 'create_user'
+      post 'balance_user'
     end
   end
 
