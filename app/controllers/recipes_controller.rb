@@ -3,12 +3,12 @@ class RecipesController < ApplicationController
   expose(:group)
   expose(:recipes, ancestor: :group)
   expose(:recipe, attributes: :recipe_params)
+  expose(:permited_users) { group.users.select { |u| u != current_user } }
 
   def index
   end
 
   def new
-    @permited_users = group.users.select { |u| u != current_user }
   end
 
   def create
