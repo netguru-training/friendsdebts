@@ -30,6 +30,7 @@ group :development do
   gem 'rails_apps_testing'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem "letter_opener"
 end
 
 group :development, :test do
